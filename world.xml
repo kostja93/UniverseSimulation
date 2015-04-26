@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<X3D profile='Immersive'>
+	<Viewpoint position="0 0 25"/> 
+	<Scene>
+		<Shape>
+			<Sphere radius="2"/>
+			<Appearance>
+				<ImageTexture url="assets/earth.jpg"/>
+			</Appearance>
+		</Shape>
+		<Transform translation='0 4 0'>
+			<Shape>
+				<Cone bottomRadius="2" height="4"/>
+				<Appearance>
+					<Material diffuseColor="1 0 0"/>
+				</Appearance>
+			</Shape>
+		</Transform>
+		<Transform translation="0 -4 0">
+			<Shape>
+				<Cylinder height="4" radius="2"/>
+				<Appearance>
+					<Material diffuseColor="0 1 0" />
+				</Appearance>
+			</Shape>
+		</Transform>
+		<Transform translation='0 -8 0'>
+		<Shape>
+			<Box size='1 2 3'/>
+			<Appearance>
+				<Material diffuseColor="1 0 0"/>
+			</Appearance>
+		</Shape>
+		</Transform>
+	</Scene>
+</X3D> 

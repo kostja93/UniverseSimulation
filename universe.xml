@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<X3D profile='Immersive'>
+	<Viewpoint position="0 0 150"/> 
+
+	<ProtoDeclare name="Planet">
+		<ProtoInterface>
+			<field accessType="initializeOnly" name="radius" type="SFFloat"/>
+			<field accessType="inputOutput" name="texture" type="SFString" />
+		</ProtoInterface>
+		<ProtoBody>
+			<Scene>
+				<Transform  DEF="planet">
+					<Shape>
+						<Sphere>
+							<IS>
+								<connect nodeField="radius" protoField="radius" />
+							</IS>
+						</Sphere>
+						<Appearance>
+							<ImageTexture>
+								<IS>
+									<connect nodeField="url" protoField="texture" />
+								</IS>
+							</ImageTexture>
+						</Appearance>
+					</Shape>
+				</Transform>
+	 		</Scene>
+		</ProtoBody>
+	</ProtoDeclare>
+
+	<Scene>
+		<Transform DEF="system">
+			<ProtoInstance name="Planet">
+				<fieldValue name="radius" value="25" />
+				<fieldValue name="texture" value="assets/sun.jpg" />
+			</ProtoInstance>
+
+			<Transform translation="50 0 0" DEF="system2">
+				<ProtoInstance name="Planet">
+					<fieldValue name="radius"  value="7" />
+					<fieldValue name="texture" value="assets/earth.jpg" />
+				</ProtoInstance>
+				<Transform translation="15 0 0">
+					<ProtoInstance name="Planet">
+						<fieldValue name="radius"  value="3" />
+						<fieldValue name="texture" value="assets/moon.jpg" />
+					</ProtoInstance>
+				</Transform>
+			</Transform>
+			<TimeSensor DEF="time" cycleInterval="12" loop="true"/>
+			<OrientationInterpolator DEF="rotationSystem2" 
+				key="0 0.25 0.5 0.75 1" 
+				keyValue="0 1 0 0, 0 1 0 1.57, 0 1 0 3.14159,0 1 0 4.71159, 0 1 0 6.28318"/>
+			<ROUTE fromNode="time" fromField="fraction_changed" toNode="rotationSystem2" toField="set_fraction"/>
+			<ROUTE fromNode="rotationSystem2" fromField="value_changed" toNode="system2" toField="set_rotation"/>
+		</Transform>
+		<TimeSensor DEF="time" cycleInterval="12" loop="true"/>
+		<OrientationInterpolator DEF="rotationSystem" 
+			key="0 0.25 0.5 0.75 1" 
+			keyValue="0 1 0 0, 0 1 0 1.57, 0 1 0 3.14159,0 1 0 4.71159, 0 1 0 6.28318"/>
+		<ROUTE fromNode="time" fromField="fraction_changed" toNode="rotationSystem" toField="set_fraction"/>
+		<ROUTE fromNode="rotationSystem" fromField="value_changed" toNode="system" toField="set_rotation"/>
+	</Scene>
+</X3D>
