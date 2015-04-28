@@ -26,9 +26,9 @@
 		</Transform>
 		<Transform translation='0 -8 0'>
 		<Shape>
-			<Box size='1 2 3'/>
+			<Box size='1 4 3'/>
 			<Appearance>
-				<Material diffuseColor="1 0 0"/>
+				<Material diffuseColor="1 0 1"/>
 			</Appearance>
 		</Shape>
 		</Transform>
