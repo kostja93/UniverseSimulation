@@ -6,7 +6,6 @@
 			<field accessType="inputOutput" name="texture" type="MFString" />
 		</ProtoInterface>
 		<ProtoBody>
-			<Scene>
 				<Transform  DEF="planet">
 					<Shape>
 						<Sphere>
@@ -23,37 +22,36 @@
 						</Appearance>
 					</Shape>
 				</Transform>
-	 		</Scene>
 		</ProtoBody>
 	</ProtoDeclare>
 
-    <ProtoDeclare name="Rotation">
-        <ProtoInterface>
-            <field accessType="inputOutput" name="keys" type="MFString" />
-            <field accessType="inputOutput" name="values" type="MFString" />
-            <field accessType="inputOutput" name="planet" type="MFString" />
-        </ProtoInterface>
-        <ProtoBody>
-			<TimeSensor DEF="time" cycleInterval="12" loop="true"/>
-			<OrientationInterpolator DEF="rotationValues" >
-                <IS>
-                    <connect nodeField="key" protoField="keys" />
-                    <connect nodeField="keyValue" protoField="values" />
-                </IS>
-			</OrientationInterpolator>
-			<ROUTE fromNode="time" fromField="fraction_changed" toNode="rotationValues" toField="set_fraction"/>
-			<ROUTE fromNode="rotationValues" fromField="value_changed" toField="set_rotation">
-                <IS>
-                    <connect nodeField="toNode" protoField="planet" />
-                </IS>
-			</ROUTE>
-        </ProtoBody>
-    </ProtoDeclare>
+    <!--<ProtoDeclare name="Rotation">-->
+        <!--<ProtoInterface>-->
+            <!--<field accessType="inputOutput" name="keys" type="MFString" />-->
+            <!--<field accessType="inputOutput" name="values" type="MFString" />-->
+            <!--<field accessType="inputOutput" name="planet" type="MFString" />-->
+        <!--</ProtoInterface>-->
+        <!--<ProtoBody>-->
+			<!--<TimeSensor DEF="time" cycleInterval="12" loop="true"/>-->
+			<!--<OrientationInterpolator DEF="rotationValues" >-->
+                <!--<IS>-->
+                    <!--<connect nodeField="key" protoField="keys" />-->
+                    <!--<connect nodeField="keyValue" protoField="values" />-->
+                <!--</IS>-->
+			<!--</OrientationInterpolator>-->
+			<!--<ROUTE fromNode="time" fromField="fraction_changed" toNode="rotationValues" toField="set_fraction"/>-->
+			<!--<ROUTE fromNode="rotationValues" fromField="value_changed" toField="set_rotation">-->
+                <!--<IS>-->
+                    <!--<connect nodeField="toNode" protoField="planet" />-->
+                <!--</IS>-->
+			<!--</ROUTE>-->
+        <!--</ProtoBody>-->
+    <!--</ProtoDeclare>-->
 
 	<Scene>
 		<Transform DEF="system">
 			<ProtoInstance name="Planet">
-				<fieldValue name="radius" value="25" />
+				<fieldValue name="radius" value="50" />
 				<fieldValue name="texture" value="assets/sun.jpg" />
 			</ProtoInstance>
 
@@ -69,11 +67,12 @@
 					</ProtoInstance>
 				</Transform>
 			</Transform>
-			<ProtoInstance>
-                <fieldValue name="keys" value="0 0.25 0.5 0.75 1" />
-                <fieldValue name="values" value="0 1 0 0, 0 1 0 1.57, 0 1 0 3.14159,0 1 0 4.71159, 0 1 0 6.28318" />
-                <fieldValue name="planet" value="system2" />
-			</ProtoInstance>
+            <TimeSensor DEF="time" cycleInterval="12" loop="true"/>
+            <OrientationInterpolator DEF="rotationSystem2"
+                key="0 0.25 0.5 0.75 1"
+                keyValue="0 1 0 0, 0 1 0 1.57, 0 1 0 3.14159,0 1 0 4.71159, 0 1 0 6.28318"/>
+            <ROUTE fromNode="time" fromField="fraction_changed" toNode="rotationSystem2" toField="set_fraction"/>
+            <ROUTE fromNode="rotationSystem2" fromField="value_changed" toNode="system2" toField="set_rotation"/>
 		</Transform>
 		<TimeSensor DEF="time" cycleInterval="12" loop="true"/>
 		<OrientationInterpolator DEF="rotationSystem" 
