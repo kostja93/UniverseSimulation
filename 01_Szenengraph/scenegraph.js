@@ -33,4 +33,6 @@ Scenegraph.prototype.draw = function(){
 	
 	console.log(this.logString);
 	console.log("Zeichnen des Szenengraphen abgeschlossen.");
+	console.log("As Object:");
+	console.log(this.root);
 }
