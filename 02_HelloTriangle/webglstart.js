@@ -4,6 +4,8 @@ var quader;
 var shaderProgram;
 var modelViewMatrix = mat4.create();
 var projectionMatrix = mat4.create();
+var rotationLocation;
+var rotation;
 
 // globale Funktionen
 function webGLStart() {
@@ -29,6 +31,8 @@ function webGLStart() {
         [ 0.75,-0.75,-0.75],//point G
         [ 0.75, 0.75,-0.75] //point H
     ]);
+    rotationLocation = rotationLocation = gl.getUniformLocation(shaderProgram, "u_rotation");
+    rotation = [0.69, 0.73];
 
     drawScene();
 }
@@ -111,6 +115,7 @@ function drawScene() {
 
     gl.uniformMatrix4fv(shaderProgram.pMatrixUniform, false, projectionMatrix);
     gl.uniformMatrix4fv(shaderProgram.mvMatrixUniform, false, modelViewMatrix);
+    gl.uniform2fv(rotationLocation, rotation);
 
     //triangle.draw();
     quader.draw();
