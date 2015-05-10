@@ -1,22 +1,25 @@
 var Square = function(matrix) {
-    var v1 = vec3.create();
-    var v2 = vec3.create();
-    var v3 = vec3.create();
+    GeometricObject.call(this);
 
-    vec3.set(v1, -0.75, 0.75, 0.0);
-    vec3.set(v2, -0.75, -0.75, 0.0);
-    vec3.set(v3, 0.75, -0.75, 0.0);
+    var pointA = matrix[0],
+        pointB = matrix[1],
+        pointC = matrix[2],
+        pointD = matrix[3],
+        v1 = vec3.create(),
+        v2 = vec3.create(),
+        v3 = vec3.create();
 
-    this.triangle1 = new Triangle(v1,v2,v3);
+    vec3.set(v1, pointA[0], pointA[1], pointA[2]);
+    vec3.set(v2, pointB[0], pointB[1], pointB[2]);
+    vec3.set(v3, pointC[0], pointC[1], pointC[2]);
 
-    vec3.set(v1, -0.75, 0.75, 0.0);
-    vec3.set(v2, 0.75, -0.75, 0.0);
-    vec3.set(v3, 0.75, 0.75, 0.0);
+    this.shape.push( new Triangle(v1,v2,v3));
 
-    this.triangle2 = new Triangle(v1,v2,v3);
+    vec3.set(v2, pointC[0], pointC[1], pointC[2]);
+    vec3.set(v3, pointD[0], pointD[1], pointD[2]);
+
+    this.shape.push( new Triangle(v1,v2,v3) );
 };
 
-Square.prototype.draw = function() {
-    this.triangle1.draw();
-    this.triangle2.draw();
-}
+Square.prototype = Object.create(GeometricObject.prototype);
+Square.prototype.constructor = GeometricObject;

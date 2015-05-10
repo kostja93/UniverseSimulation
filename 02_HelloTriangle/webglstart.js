@@ -1,7 +1,6 @@
 // globale Variablen
 var gl;
-var triangle;
-var square;
+var quader;
 var shaderProgram;
 var modelViewMatrix = mat4.create();
 var projectionMatrix = mat4.create();
@@ -19,19 +18,17 @@ function webGLStart() {
     console.log(gl.getParameter(gl.VERSION));
     console.log(gl.getParameter(gl.SHADING_LANGUAGE_VERSION));
 
-    // Zusammensetzen eines Dreieck
-//    var v1 = vec3.create();
-//    vec3.set(v1, -0.75, 0.75, 0.0);
-//
-//    var v2 = vec3.create();
-//    vec3.set(v2, -0.75, -0.75, 0.0);
-//
-//    var v3 = vec3.create();
-//    vec3.set(v3, 0.75, -0.75, 0.0);
-//
-//    triangle = new Triangle(v1,v2,v3);
+    quader = new Quader([
+        [-0.75, 0.75,0],//point A
+        [-0.75,-0.75,0],//point B
+        [ 0.5,-0.5,0],//point C
+        [ 0.5, 0.5,0],//point D
 
-    square = new Square();
+        [-0.75, 0.75,-0.75],//point E
+        [-0.75,-0.75,-0.75],//point F
+        [ 0.75,-0.75,-0.75],//point G
+        [ 0.75, 0.75,-0.75] //point H
+    ]);
 
     drawScene();
 }
@@ -116,7 +113,7 @@ function drawScene() {
     gl.uniformMatrix4fv(shaderProgram.mvMatrixUniform, false, modelViewMatrix);
 
     //triangle.draw();
-    square.draw();
+    quader.draw();
 
     // Ermöglicht Echtzeit Rendering und Animation
     window.requestAnimationFrame(drawScene)
