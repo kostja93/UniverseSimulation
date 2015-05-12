@@ -4,8 +4,6 @@ var quader;
 var shaderProgram;
 var modelViewMatrix = mat4.create();
 var projectionMatrix = mat4.create();
-var rotationLocation;
-var rotation;
 
 // globale Funktionen
 function webGLStart() {
@@ -20,9 +18,19 @@ function webGLStart() {
     console.log(gl.getParameter(gl.VERSION));
     console.log(gl.getParameter(gl.SHADING_LANGUAGE_VERSION));
 
-    quader = new Dice([-0.25,1,-1], 0.25);
-    rotationLocation = rotationLocation = gl.getUniformLocation(shaderProgram, "u_rotation");
-    rotation = [0.69, 0.73];
+
+//    var v1 = vec3.create(),
+//        v2 = vec3.create(),
+//        v3 = vec3.create(),
+//        v4 = vec3.create();
+//    vec3.set(v1, -0.75, 0.75, 0.0);
+//    vec3.set(v2, -0.75, -0.75, 0.0);
+//    vec3.set(v3, 0.75, -0.75, 0.0);
+//    vec3.set(v4, 0.75, 0.75, 0.0);
+//
+//    quader = new Square(v1, v2, v3, v4);
+
+    quader = new Quader(0.5,1.5,1);
 
     drawScene();
 }
@@ -59,6 +67,7 @@ function initShaders() {
 
     shaderProgram.pMatrixUniform = gl.getUniformLocation(shaderProgram, "uProjectionMatrix");
     shaderProgram.mvMatrixUniform = gl.getUniformLocation(shaderProgram, "uModelViewMatrix");
+
 }
 
 function getShaderFromHTML(id) {
@@ -105,9 +114,7 @@ function drawScene() {
 
     gl.uniformMatrix4fv(shaderProgram.pMatrixUniform, false, projectionMatrix);
     gl.uniformMatrix4fv(shaderProgram.mvMatrixUniform, false, modelViewMatrix);
-    gl.uniform2fv(rotationLocation, rotation);
 
-    //triangle.draw();
     quader.draw();
 
     // Ermöglicht Echtzeit Rendering und Animation

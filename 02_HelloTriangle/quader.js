@@ -2,24 +2,37 @@
  * Created by kostja on 10.05.15.
  **/
 
-var Quader = function (matrix) {
+var Quader = function (width, height, depth) {
     GeometricObject.call(this);
 
-    var A = matrix[0],
-        B = matrix[1],
-        C = matrix[2],
-        D = matrix[3],
-        E = matrix[4],
-        F = matrix[5],
-        G = matrix[6],
-        H = matrix[7];
+    var A = vec3.create(),
+        B = vec3.create(),
+        C = vec3.create(),
+        D = vec3.create(),
+        E = vec3.create(),
+        F = vec3.create(),
+        G = vec3.create(),
+        H = vec3.create(),
+        halfWidth  = width/2
+        halfHeight = height/2,
+        halfDepth  = depth/2;
 
-    this.shape.push(new Square([A, B, C, D]));
-    this.shape.push(new Square([D, C, G, H]));
-    this.shape.push(new Square([G, H, E, F]));
-    this.shape.push(new Square([F, B, A, E]));
-    this.shape.push(new Square([E, A, D, H]));
-    this.shape.push(new Square([B, C, G, F]));
+    vec3.set(A, -halfWidth,  halfHeight,  halfDepth);
+    vec3.set(B, -halfWidth, -halfHeight,  halfDepth);
+    vec3.set(C,  halfWidth, -halfHeight,  halfDepth);
+    vec3.set(D,  halfWidth,  halfHeight,  halfDepth);
+
+    vec3.set(E, -halfWidth,  halfHeight, -halfDepth);
+    vec3.set(F, -halfWidth, -halfHeight, -halfDepth);
+    vec3.set(G,  halfWidth, -halfHeight, -halfDepth);
+    vec3.set(H,  halfWidth,  halfHeight, -halfDepth);
+
+    this.shape.push(new Square(A, B, C, D));
+    this.shape.push(new Square(D, C, G, H));
+    this.shape.push(new Square(G, H, E, F));
+    this.shape.push(new Square(F, B, A, E));
+    this.shape.push(new Square(E, A, D, H));
+    this.shape.push(new Square(B, C, G, F));
 };
 
 Quader.prototype = Object.create(GeometricObject.prototype);

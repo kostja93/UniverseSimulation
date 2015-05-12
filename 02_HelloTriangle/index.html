@@ -11,7 +11,6 @@
         <script src="./triangle.js" type="text/javascript"></script>
         <script src="./square.js" type="text/javascript"></script>
         <script src="./quader.js" type="application/javascript"></script>
-        <script src="./dice.js" type="application/javascript"></script>
         <script src="./webglstart.js" type="text/javascript"></script>
 
         <!-- Vertex Shader-->
@@ -20,17 +19,7 @@
         uniform mat4 uModelViewMatrix;
         uniform mat4 uProjectionMatrix;
 
-        attribute vec2 a_position;
-
-        uniform vec2 u_resolution;
-        uniform vec2 u_translation;
-        uniform vec2 u_rotation;
-
         void main(void) {
-            vec2 rotatedPosition = vec2(
-                a_position.x * u_rotation.y + a_position.y * u_rotation.x,
-                a_position.y * u_rotation.y - a_position.x * u_rotation.x
-            );
             gl_Position = uProjectionMatrix * uModelViewMatrix * vec4(aVertexPosition, 1.0);
         }
         </script>
@@ -39,10 +28,11 @@
         <script id="shader-fs" type="x-shader/x-fragment">
         #ifdef GL_ES
             precision mediump float;
+            uniform vec4 u_color;
         #endif
 
         void main(void) {
-            gl_FragColor = vec4(1.0, 0, 0, 1.0);
+            gl_FragColor = vec4(1, 0, 0, 1);
         }
         </script>
 

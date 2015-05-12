@@ -7,7 +7,5 @@ var GeometricObject = function () {
 };
 
 GeometricObject.prototype.draw = function () {
-    for(var i = 0; i < this.shape.length; i++) {
-        this.shape[i].draw();
-    }
+    this.shape.forEach(function(el){el.draw();});
 };
