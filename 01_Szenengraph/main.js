@@ -4,26 +4,20 @@
 var sonne = new Orb("Sonne", 0, 1392000, 0, 7.25);
 
 // Planet
-var translation = new Transform(150,0);
-var rotation    = new Transform(0,0);
+var orbit = new Orbit(150,0);
 var earth = new Orb("Erde", 12800, 23.45);
-translation.addChild(earth);
-rotation.addChild(translation);
-sonne.addChild(rotation);
+orbit.addChild(earth);
+sonne.addChild(orbit);
 
-translation = new Transform(230,0);
-rotation    = new Transform(0,1.85);
+orbit = new Orbit(230, 1.85);
 var mars  = new Orb("Mars", 6800, 25.19);
-translation.addChild(mars);
-rotation.addChild(translation);
-sonne.addChild(rotation);
+orbit.addChild(mars);
+sonne.addChild(orbit);
 
-translation = new Transform(0.384, 0);
-rotation    = new Transform(0, 5.145);
+orbit = new Orbit(0.384, 5.145);
 var moon  = new Orb("Mond", 3476, 1.54);
-translation.addChild(moon);
-rotation.addChild(translation);
-earth.addChild(rotation);
+orbit.addChild(moon);
+earth.addChild(orbit);
 
 
 // zeichne Szenengraph, gebe Wurzelobjekt als Start
