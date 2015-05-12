@@ -20,17 +20,7 @@ function webGLStart() {
     console.log(gl.getParameter(gl.VERSION));
     console.log(gl.getParameter(gl.SHADING_LANGUAGE_VERSION));
 
-    quader = new Quader([
-        [-0.75, 0.75,0],//point A
-        [-0.75,-0.75,0],//point B
-        [ 0.5,-0.5,0],//point C
-        [ 0.5, 0.5,0],//point D
-
-        [-0.75, 0.75,-0.75],//point E
-        [-0.75,-0.75,-0.75],//point F
-        [ 0.75,-0.75,-0.75],//point G
-        [ 0.75, 0.75,-0.75] //point H
-    ]);
+    quader = new Dice([-0.25,1,-1], 0.25);
     rotationLocation = rotationLocation = gl.getUniformLocation(shaderProgram, "u_rotation");
     rotation = [0.69, 0.73];
 

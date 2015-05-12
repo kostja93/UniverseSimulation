@@ -1,9 +1,7 @@
-var Orb = function(name, radius, diameter, rotation, tilt){
+var Orb = function(name, diameter, tilt){
 	Node.call(this);
 	this.name     = name;
-	this.radius   = radius;
 	this.diameter = diameter;
-	this.rotation = rotation;
 	this.tilt     = tilt;
 }
 
@@ -13,6 +11,6 @@ Orb.prototype.constructor = Node;
 
 //Add Functions to the Orb prototype
 Orb.prototype.draw = function(logString){
-	logString += this.name+"," + this.radius+"," + this.diameter+"," + this.rotation+"," + this.tilt;
+	logString += this.name+"," + this.diameter+","+ this.tilt;
 	return logString;
 }
