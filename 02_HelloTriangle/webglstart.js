@@ -14,21 +14,9 @@ function webGLStart() {
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
     gl.enable(gl.DEPTH_TEST);
     gl.enable(gl.CULL_FACE);
-    
+
     console.log(gl.getParameter(gl.VERSION));
     console.log(gl.getParameter(gl.SHADING_LANGUAGE_VERSION));
-
-
-//    var v1 = vec3.create(),
-//        v2 = vec3.create(),
-//        v3 = vec3.create(),
-//        v4 = vec3.create();
-//    vec3.set(v1, -0.75, 0.75, 0.0);
-//    vec3.set(v2, -0.75, -0.75, 0.0);
-//    vec3.set(v3, 0.75, -0.75, 0.0);
-//    vec3.set(v4, 0.75, 0.75, 0.0);
-//
-//    quader = new Square(v1, v2, v3, v4);
 
     quader = new Quader(0.5,1.5,1);
 
@@ -109,7 +97,7 @@ function drawScene() {
     gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-    mat4.identity(projectionMatrix);  
+    mat4.identity(projectionMatrix);
     mat4.identity(modelViewMatrix);
 
     gl.uniformMatrix4fv(shaderProgram.pMatrixUniform, false, projectionMatrix);
