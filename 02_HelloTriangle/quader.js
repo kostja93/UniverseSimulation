@@ -29,10 +29,10 @@ var Quader = function (width, height, depth) {
 
     this.shape.push(new Square(A, B, C, D));
     this.shape.push(new Square(D, C, G, H));
-    this.shape.push(new Square(G, H, E, F));
-    this.shape.push(new Square(F, B, A, E));
+    this.shape.push(new Square(H, G, F, E));
+    this.shape.push(new Square(E, F, B, A));
     this.shape.push(new Square(E, A, D, H));
-    this.shape.push(new Square(B, C, G, F));
+    this.shape.push(new Square(B, F, G, C));
 };
 
 Quader.prototype = Object.create(GeometricObject.prototype);
