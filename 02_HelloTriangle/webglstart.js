@@ -98,9 +98,7 @@ function drawScene() {
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
     mat4.identity(projectionMatrix);
-    //mat4.identity(modelViewMatrix);
-    mat4.rotateY(modelViewMatrix, modelViewMatrix, Math.PI/100.);
-    mat4.rotateX(modelViewMatrix, modelViewMatrix, Math.PI/100.);
+    mat4.identity(modelViewMatrix);
 
     gl.uniformMatrix4fv(shaderProgram.pMatrixUniform, false, projectionMatrix);
     gl.uniformMatrix4fv(shaderProgram.mvMatrixUniform, false, modelViewMatrix);
