@@ -1,20 +1,21 @@
 /**
  * Created by kostja93 on 26.05.15.
  */
-var Camera = function (matrix) {
+var Camera = function (matrix, model) {
     this.projection = matrix;
+    this.model      = model;
 };
 
 Camera.prototype.rotateX = function (radians) {
-    mat4.rotateX(this.projection, this.projection, radians);
+    mat4.rotateX(this.model, this.model, radians);
 };
 
 Camera.prototype.rotateY = function (radians) {
-    mat4.rotateY(this.projection, this.projection, radians);
+    mat4.rotateY(this.model, this.model, radians);
 };
 
 Camera.prototype.rotateZ = function (radians) {
-    mat4.rotateZ(this.projection, this.projection, radians);
+    mat4.rotateZ(this.model, this.model, radians);
 };
 
 Camera.prototype.perspective = function (fudgeFactor) {
@@ -35,7 +36,6 @@ Camera.prototype.perspective = function (fudgeFactor) {
             0, 0, (near + far) * rangeInv, -1,
             0, 0, near * far * rangeInv * 2, 0
         ];
-
     mat4.multiply(this.projection, this.projection, perspactiveProjection);
-    //mat4.multiply(this.projection, this.projection, zMatrix);
+    //TODO: make it with glMatrix functions
 };

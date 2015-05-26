@@ -5,6 +5,7 @@ var shaderProgram;
 var modelViewMatrix = mat4.create();
 var projectionMatrix = mat4.create();
 var keyboard;
+var cam;
 
 // globale Funktionen
 function webGLStart() {
@@ -20,7 +21,7 @@ function webGLStart() {
     console.log(gl.getParameter(gl.SHADING_LANGUAGE_VERSION));
 
     quader = new Quader(0.5,1.5,1);
-    var cam = new Camera(projectionMatrix);
+    cam = new Camera(projectionMatrix, modelViewMatrix);
     keyboard = new KeyboardObserver(cam);
     cam.perspective(0.34);
     keyboard.registerEvents();
