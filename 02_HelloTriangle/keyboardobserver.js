@@ -34,8 +34,8 @@ KeyboardObserver.prototype.keyPressed = function (code) {
     } else if (code == 83 || code == 40) {
         this.camera.rotateX(radians);
     } else if (code == 81) {
-        this.camera.rotateZ(-radians);
-    } else if (code == 69) {
         this.camera.rotateZ(radians);
+    } else if (code == 69) {
+        this.camera.rotateZ(-radians);
     }
 };
