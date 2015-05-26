@@ -3,6 +3,7 @@
  */
 var Camera = function (matrix) {
     this.matrix = matrix;
+    this.projection = matrix;
     console.log(matrix);
 };
 
@@ -25,5 +26,5 @@ Camera.prototype.perspective = function (fudgeFactor) {
         0, 0, 1, fudgeFactor,
         0, 0, 0, 1
     ];
-    mat4.multiply(this.matrix, this.matrix, perspactiveMatrix);
+    mat4.multiply(this.projection, this.projection, perspactiveMatrix);
 };

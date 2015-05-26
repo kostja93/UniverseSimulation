@@ -20,7 +20,7 @@ function webGLStart() {
     console.log(gl.getParameter(gl.SHADING_LANGUAGE_VERSION));
 
     quader = new Quader(0.5,1.5,1);
-    var cam = new Camera(modelViewMatrix);
+    var cam = new Camera(projectionMatrix);
     keyboard = new KeyboardObserver(cam);
     cam.perspective(0.34);
     keyboard.registerEvents();
@@ -103,7 +103,7 @@ function drawScene() {
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
     mat4.identity(projectionMatrix);
-    //mat4.identity(modelViewMatrix);
+    mat4.identity(modelViewMatrix);
 
     gl.uniformMatrix4fv(shaderProgram.pMatrixUniform, false, projectionMatrix);
     gl.uniformMatrix4fv(shaderProgram.mvMatrixUniform, false, modelViewMatrix);
@@ -112,13 +112,4 @@ function drawScene() {
 
     // Ermöglicht Echtzeit Rendering und Animation
     window.requestAnimationFrame(drawScene)
-}
-
-function makeTraslation(x, y, z) {
-    return [
-        1, 0, 0, 0,
-        0, 1, 0, 0,
-        0, 0, 1, 0,
-        x, y, z, 1
-    ];
 }
