@@ -23,6 +23,19 @@ Camera.prototype.perspective = function (fudgeFactor) {
         0, 1, 0, 0,
         0, 0, 1, fudgeFactor,
         0, 0, 0, 1
-    ];
+        ],
+        f = 30,
+        aspect = 1,
+        near = 0,
+        far  = 1,
+        rangeInv = 1.0 / (near - far);
+        zMatrix = [
+            f / aspect, 0, 0, 0,
+            0, f, 0, 0,
+            0, 0, (near + far) * rangeInv, -1,
+            0, 0, near * far * rangeInv * 2, 0
+        ];
+
     mat4.multiply(this.projection, this.projection, perspactiveProjection);
+    //mat4.multiply(this.projection, this.projection, zMatrix);
 };
