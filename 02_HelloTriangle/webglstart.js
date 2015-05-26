@@ -4,6 +4,7 @@ var quader;
 var shaderProgram;
 var modelViewMatrix = mat4.create();
 var projectionMatrix = mat4.create();
+var keyboard;
 
 // globale Funktionen
 function webGLStart() {
@@ -19,6 +20,8 @@ function webGLStart() {
     console.log(gl.getParameter(gl.SHADING_LANGUAGE_VERSION));
 
     quader = new Quader(0.5,1.5,1);
+    keyboard = new KeyboardObserver();
+    keyboard.registerEvents();
 
     drawScene();
 }
@@ -98,7 +101,7 @@ function drawScene() {
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
     mat4.identity(projectionMatrix);
-    mat4.identity(modelViewMatrix);
+    //mat4.identity(modelViewMatrix);
 
     gl.uniformMatrix4fv(shaderProgram.pMatrixUniform, false, projectionMatrix);
     gl.uniformMatrix4fv(shaderProgram.mvMatrixUniform, false, modelViewMatrix);

@@ -3,7 +3,6 @@
  */
 
 var KeyboardObserver = function () {
-    this.listener = [];
 };
 
 KeyboardObserver.prototype.registerEvents = function() {
@@ -14,19 +13,28 @@ KeyboardObserver.prototype.registerEvents = function() {
         keyControl: function (event) {
             var keyboardDemo = this.keyboardDemo;
 
-            keyboardDemo.doSomething(event.keyCode);
+            keyboardDemo.keyPressed(event.keyCode);
 
         }
     }
 
 };
 
-KeyboardObserver.prototype.addListener = function (listener) {
-    this.listener.push(listener);
-};
-
 KeyboardObserver.prototype.keyPressed = function (code) {
-    this.listener.forEach(function(el) {
-        //TODO: implement validation of input and rotate the camera
-    });
+    console.log(code + " was pressed");
+    var number = 100.0;
+
+    if (code == 65 || code == 37) { // a or <-
+        mat4.rotateY(modelViewMatrix, modelViewMatrix, -Math.PI/number);
+    } else if (code == 68 || code == 39) {// d or ->
+        mat4.rotateY(modelViewMatrix, modelViewMatrix,  Math.PI/number);
+    } else if (code == 87 || code == 38) {
+        mat4.rotateX(modelViewMatrix, modelViewMatrix, -Math.PI/number);
+    } else if (code == 83 || code == 40) {
+        mat4.rotateX(modelViewMatrix, modelViewMatrix,  Math.PI/number);
+    } else if (code == 81) {
+        mat4.rotateZ(modelViewMatrix, modelViewMatrix, -Math.PI/number);
+    } else if (code == 69) {
+        mat4.rotateZ(modelViewMatrix, modelViewMatrix,  Math.PI/number);
+    }
 };

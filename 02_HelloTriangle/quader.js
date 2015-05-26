@@ -13,7 +13,7 @@ var Quader = function (width, height, depth) {
         F = vec3.create(),
         G = vec3.create(),
         H = vec3.create(),
-        halfWidth  = width/2
+        halfWidth  = width/ 2,
         halfHeight = height/2,
         halfDepth  = depth/2;
 
