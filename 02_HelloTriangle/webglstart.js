@@ -113,12 +113,3 @@ function drawScene() {
     // Ermöglicht Echtzeit Rendering und Animation
     window.requestAnimationFrame(drawScene)
 }
-
-function makeTraslation(x, y, z) {
-    return [
-        1, 0, 0, 0,
-        0, 1, 0, 0,
-        0, 0, 1, 0,
-        x, y, z, 1
-    ];
-}
