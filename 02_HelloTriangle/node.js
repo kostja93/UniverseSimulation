@@ -1,6 +1,5 @@
 var Node = function(){
-  this.children = []; 
-  this.modelView;
+  this.children = [];
 };
 
 Node.prototype.getChildren = function(){

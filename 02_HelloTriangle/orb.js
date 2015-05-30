@@ -3,14 +3,15 @@ var Orb = function(name, diameter, tilt){
 	this.name     = name;
 	this.diameter = diameter;
 	this.tilt     = tilt;
-}
+
+    this.quader = new Quader(this.diameter, this.diameter, this.diameter);
+};
 
 //Inherit from Node
 Orb.prototype = Object.create(Node.prototype);
 Orb.prototype.constructor = Node;
 
 //Add Functions to the Orb prototype
-Orb.prototype.draw = function(logString){
-	logString += this.name+"," + this.diameter+","+ this.tilt;
-	return logString;
-}
+Orb.prototype.draw = function(){
+    quader.draw();
+};
