@@ -23,7 +23,7 @@ function webGLStart() {
     quader = new Quader(0.5,1.5,1);
     cam = new Camera(projectionMatrix, modelViewMatrix);
     keyboard = new KeyboardObserver(cam);
-    cam.perspective(0.34);
+    cam.perspective(180, canvas.width / canvas.height, 0.49, 100.0);
     keyboard.registerEvents();
 
     drawScene();
