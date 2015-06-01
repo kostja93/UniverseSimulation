@@ -1,10 +1,12 @@
 var Orb = function(name, diameter, tilt){
 	Node.call(this);
 	this.name     = name;
-	this.diameter = diameter;
+	this.diameter = diameter / 1392000;
 	this.tilt     = tilt;
 
-    //this.quader = new Quader(this.diameter, this.diameter, this.diameter);
+
+    console.log(this.diameter);
+    this.quader = new Quader(this.diameter, this.diameter, this.diameter);
 };
 
 //Inherit from Node
@@ -12,7 +14,6 @@ Orb.prototype = Object.create(Node.prototype);
 Orb.prototype.constructor = Node;
 
 //Add Functions to the Orb prototype
-Orb.prototype.draw = function(logString){
-    logString += this.name+"," + this.radius+"," + this.diameter+"," + this.rotation+"," + this.tilt;
-    return logString;
+Orb.prototype.draw = function(){
+    this.quader.draw();
 };

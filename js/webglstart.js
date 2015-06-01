@@ -1,6 +1,7 @@
 // globale Variablen
 var gl;
 var quader;
+var universeGraph;
 var shaderProgram;
 var modelViewMatrix = mat4.create();
 var projectionMatrix = mat4.create();
@@ -20,6 +21,8 @@ function webGLStart() {
     console.log(gl.getParameter(gl.VERSION));
     console.log(gl.getParameter(gl.SHADING_LANGUAGE_VERSION));
 
+    universeGraph = initSceneGraph();
+    quader = new Quader(1,1,1);
     cam = new Camera(projectionMatrix, modelViewMatrix);
     keyboard = new KeyboardObserver(cam);
     cam.perspective(180, canvas.width / canvas.height, 0.49, 100.0);
@@ -105,7 +108,8 @@ function drawScene() {
     gl.uniformMatrix4fv(shaderProgram.pMatrixUniform, false, projectionMatrix);
     gl.uniformMatrix4fv(shaderProgram.mvMatrixUniform, false, modelViewMatrix);
 
-    quader.draw();
+    universeGraph.draw();
+    //quader.draw();
 
     // Ermöglicht Echtzeit Rendering und Animation
     window.requestAnimationFrame(drawScene)
