@@ -22,7 +22,7 @@ KeyboardObserver.prototype.registerEvents = function() {
 };
 
 KeyboardObserver.prototype.keyPressed = function (code) {
-    console.log(code + " was pressed");
+    //console.log(code + " was pressed");
     var radians = Math.PI / 100.0;
 
     if (code == 65 || code == 37) { // a or <-

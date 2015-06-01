@@ -20,7 +20,6 @@ function webGLStart() {
     console.log(gl.getParameter(gl.VERSION));
     console.log(gl.getParameter(gl.SHADING_LANGUAGE_VERSION));
 
-    quader = new Quader(0.5,1.5,1);
     cam = new Camera(projectionMatrix, modelViewMatrix);
     keyboard = new KeyboardObserver(cam);
     cam.perspective(180, canvas.width / canvas.height, 0.49, 100.0);

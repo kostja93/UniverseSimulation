@@ -30,7 +30,7 @@
 		<Transform DEF="system">
 			<ProtoInstance name="Planet">
 				<fieldValue name="radius" value="25" />
-				<fieldValue name="texture" value="assets/sun.jpg" />
+				<fieldValue name="texture" value="../assets/sun.jpg" />
 			</ProtoInstance>
 
             <Transform rotation="0 0 0 0">
@@ -39,7 +39,7 @@
                         <Transform DEF="earth">
                             <ProtoInstance name="Planet">
                                 <fieldValue name="radius"  value="7" />
-                                <fieldValue name="texture" value="assets/earth.jpg" />
+                                <fieldValue name="texture" value="../assets/earth.jpg" />
                             </ProtoInstance>
                         </Transform>
                         <TimeSensor DEF="time" cycleInterval="12" loop="true"/>
@@ -54,7 +54,7 @@
                                 <Transform translation="15 0 0">
                                     <ProtoInstance name="Planet">
                                         <fieldValue name="radius"  value="3" />
-                                        <fieldValue name="texture" value="assets/moon.jpg" />
+                                        <fieldValue name="texture" value="../assets/moon.jpg" />
                                     </ProtoInstance>
                                 </Transform>
                             </Transform>
