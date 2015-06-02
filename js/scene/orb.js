@@ -1,8 +1,8 @@
 var Orb = function(name, diameter, tilt){
 	Node.call(this);
 	this.name     = name;
-	this.diameter = diameter / 1392000;
-	this.tilt     = tilt;
+	this.diameter = scale(diameter);
+	this.tilt     = degToRad(tilt);
 
 
     console.log(this.diameter);
