@@ -4,8 +4,6 @@ var Orb = function(name, diameter, tilt){
 	this.diameter = scale(diameter);
 	this.tilt     = degToRad(tilt);
 
-
-    console.log(this.diameter);
     this.quader = new Quader(this.diameter, this.diameter, this.diameter);
 };
 

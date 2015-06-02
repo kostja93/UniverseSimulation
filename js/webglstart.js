@@ -21,8 +21,13 @@ function webGLStart() {
     console.log(gl.getParameter(gl.VERSION));
     console.log(gl.getParameter(gl.SHADING_LANGUAGE_VERSION));
 
-    universeGraph = initSceneGraph(canvas, projectionMatrix, modelViewMatrix);
+    //universeGraph = initSceneGraph(canvas, projectionMatrix, modelViewMatrix);
 
+    universeGraph = new Sphere(0.5);
+    var cam = new Camera(projectionMatrix, modelViewMatrix);
+    var keyboard = new KeyboardObserver(cam);
+    cam.perspective(45, gl.viewportWidth / gl.viewportHeight, 0.1, 100000.0);
+    keyboard.registerEvents();
     drawScene();
 }
 
