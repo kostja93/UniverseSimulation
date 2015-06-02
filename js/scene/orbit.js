@@ -14,7 +14,8 @@ Orbit.prototype = Object.create(Node.prototype);
 Orbit.prototype.constructor = Node;
 
 Orbit.prototype.draw = function(){
+    var self = this;
     this.children.forEach( function(orbElem) {
-        orbElem.appendTransformation(this.transformationMatrix);
+        orbElem.appendTransformation(self.transformationMatrix);
     });
 };
