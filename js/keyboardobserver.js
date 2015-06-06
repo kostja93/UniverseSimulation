@@ -23,7 +23,7 @@ KeyboardObserver.prototype.registerEvents = function() {
 
 KeyboardObserver.prototype.keyPressed = function (code) {
     //console.log(code + " was pressed");
-    var radians = Math.PI / 100.0;
+    var radians = Math.PI / 10.0;
 
     if (code == 65 || code == 37) { // a or <-
         this.camera.rotateY(-radians);
@@ -34,8 +34,10 @@ KeyboardObserver.prototype.keyPressed = function (code) {
     } else if (code == 83 || code == 40) {
         this.camera.rotateX(radians);
     } else if (code == 81) {
-        this.camera.rotateZ(radians);
+        this.camera.move([0, 0, 0.1]);
+        //this.camera.rotateZ(radians);
     } else if (code == 69) {
-        this.camera.rotateZ(-radians);
+        this.camera.move([0, 0, -0.1]);
+        //this.camera.rotateZ(-radians);
     }
 };

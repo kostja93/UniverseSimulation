@@ -18,14 +18,11 @@ Camera.prototype.rotateZ = function (radians) {
     mat4.rotateZ(this.model, this.model, radians);
 };
 
-Camera.prototype.perspective = function (fovy, aspect, near, far) {
-    //mat4.perspective(this.projection, fovy, aspect, near, far);
+Camera.prototype.move = function (howFar) {
+    mat4.translate(this.model, this.model, howFar);
+};
 
-    var perspactiveProjection = [
-        1, 0, 0, 0,
-        0, 1, 0, 0,
-        0, 0, 1, 0.2,
-        0, 0, 0, 1
-    ];
-    mat4.multiply(this.projection, this.projection, perspactiveProjection);
+Camera.prototype.perspective = function (fovy, aspect, near, far) {
+    mat4.perspective(this.projection, fovy, aspect, near, far);
+    this.move([0,0, -5]);
 };
