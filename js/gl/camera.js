@@ -3,8 +3,10 @@
  */
 var Camera = function (matrix, model) {
     Node.call(this);
+    this.model = model;
     this.projection = mat4.create();
     mat4.identity(this.projection);
+    this.projection = matrix;
 };
 
 Camera.prototype = Object.create(Node.prototype);
@@ -16,5 +18,5 @@ Camera.prototype.perspective = function (fovy, aspect, near, far) {
 };
 
 Camera.prototype.draw = function () {
-    gl.uniformMatrix4fv(shaderProgram.pMatrixUniform, false, this.projection);
+    //gl.uniformMatrix4fv(shaderProgram.pMatrixUniform, false, this.projection);
 };
