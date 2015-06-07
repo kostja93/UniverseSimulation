@@ -23,7 +23,7 @@ function webGLStart() {
 
     //universeGraph = initSceneGraph(canvas, projectionMatrix, modelViewMatrix);
 
-    universeGraph = new Sphere(0.5);//Quader(1,1,1);
+    universeGraph = new Quader(1,1,1);
     var cam = new Camera(projectionMatrix, modelViewMatrix);
     var keyboard = new KeyboardObserver(cam);
     cam.perspective(45, gl.viewportWidth / gl.viewportHeight, 0.1, 100000.0);
