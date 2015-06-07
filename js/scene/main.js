@@ -5,7 +5,10 @@ function initSceneGraph(canvas, projectionMatrix, modelViewMatrix) {
     // Sonne
     var sonne = new Orb("Sonne", 1392000, 7.25);
 
-    //TODO: move camera into the scene graph
+    var cam = new Camera(projectionMatrix, modelViewMatrix);
+    var keyboard = new KeyboardObserver(cam);
+    cam.perspective(45, gl.viewportWidth / gl.viewportHeight, 0.1, 100000.0);
+    keyboard.registerEvents();
 
     // Planets
     //var orbit = new Orbit(150,0);

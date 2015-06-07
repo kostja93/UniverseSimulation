@@ -3,7 +3,7 @@ var Scenegraph = function(rootNode){
 };
 
 Scenegraph.prototype.drawTraversal = function(node){
-
+    node.draw();
     var children = node.getChildren();
     for(var c = 0; c < children.length; c++){
         this.drawTraversal(children[c]);
