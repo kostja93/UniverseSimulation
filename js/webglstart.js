@@ -99,9 +99,6 @@ function drawScene() {
     gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-    gl.uniformMatrix4fv(shaderProgram.pMatrixUniform, false, projectionMatrix);
-    gl.uniformMatrix4fv(shaderProgram.mvMatrixUniform, false, modelViewMatrix);
-
     universeGraph.draw();
 
     // Ermöglicht Echtzeit Rendering und Animation

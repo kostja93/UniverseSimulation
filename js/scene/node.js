@@ -1,5 +1,7 @@
 var Node = function(){
     this.children = [];
+    this.model = mat4.create();
+    mat4.identity(this.model);
 };
 
 Node.prototype.getChildren = function(){

@@ -28,8 +28,6 @@ function initSceneGraph(canvas, projectionMatrix, modelViewMatrix) {
 
 
     // zeichne Szenengraph, gebe Wurzelobjekt als Start
-    var sonnensystem = new Scenegraph(sonne);
-
-    return sonnensystem;
+    return new Scenegraph(sonne);
 }
 

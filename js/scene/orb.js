@@ -4,7 +4,7 @@ var Orb = function(name, diameter, tilt){
 	this.diameter = scale(diameter);
 	this.tilt     = degToRad(tilt);
 
-    this.quader = new Quader(this.diameter, this.diameter, this.diameter);
+    this.quader = new Sphere(this.diameter/2.0);
 };
 
 //Inherit from Node
