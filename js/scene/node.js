@@ -1,11 +1,7 @@
 var Node = function(){
     this.children = [];
-    this.transformationMatrix = [
-        1, 0, 0, 0,
-        0, 1, 0, 0,
-        0, 0, 1, 0,
-        0, 0, 0, 1
-    ];
+    this.model = mat4.create();
+    mat4.identity(this.model);
 };
 
 Node.prototype.getChildren = function(){

@@ -21,13 +21,8 @@ function webGLStart() {
     console.log(gl.getParameter(gl.VERSION));
     console.log(gl.getParameter(gl.SHADING_LANGUAGE_VERSION));
 
-    //universeGraph = initSceneGraph(canvas, projectionMatrix, modelViewMatrix);
-
-    universeGraph = new Quader(1,1,1);
-    var cam = new Camera(projectionMatrix, modelViewMatrix);
-    var keyboard = new KeyboardObserver(cam);
-    cam.perspective(45, gl.viewportWidth / gl.viewportHeight, 0.1, 100000.0);
-    keyboard.registerEvents();
+    universeGraph = initSceneGraph(modelViewMatrix);
+    quader = new Sphere(0.5);
     drawScene();
 }
 
@@ -105,10 +100,11 @@ function drawScene() {
     gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-    gl.uniformMatrix4fv(shaderProgram.pMatrixUniform, false, projectionMatrix);
-    gl.uniformMatrix4fv(shaderProgram.mvMatrixUniform, false, modelViewMatrix);
+    //gl.uniformMatrix4fv(shaderProgram.pMatrixUniform, false, projectionMatrix);
+    //gl.uniformMatrix4fv(shaderProgram.mvMatrixUniform, false, modelViewMatrix);
 
     universeGraph.draw();
+    quader.draw();
 
     // Ermöglicht Echtzeit Rendering und Animation
     window.requestAnimationFrame(drawScene)
