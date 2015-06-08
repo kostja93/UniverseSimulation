@@ -1,6 +1,6 @@
 var Orbit = function(radius, rotation) {
     Node.call(this);
-    this.radius = radius / 100;
+    this.radius = radius / 50;
     this.rotation = degToRad(rotation);
 
 

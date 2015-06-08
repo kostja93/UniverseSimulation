@@ -12,7 +12,7 @@ Camera.prototype.constructor = Node;
 
 Camera.prototype.perspective = function (fovy, aspect, near, far) {
     mat4.perspective(this.projection, fovy, aspect, near, far);
-    this.move([0,0, -5]);
+    this.move([0,0, -15]);
 };
 
 Camera.prototype.draw = function () {

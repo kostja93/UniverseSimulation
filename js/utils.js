@@ -7,5 +7,5 @@ function degToRad(deg) {
 }
 
 function scale(realLength) {
-    return realLength / 1392000;
+    return realLength / 13920;
 }
