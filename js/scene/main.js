@@ -21,8 +21,8 @@ function initSceneGraph(modelViewMatrix) {
     orbit.addChild(mars);
     sonne.addChild(orbit);
 
-    orbit = new Orbit(100, 5.145);
-    var moon  = new Orb("Mond", 12800, 1.54);
+    orbit = new Orbit(50, 5.145);
+    var moon  = new Orb("Mond", 3476, 1.54);
     orbit.addChild(moon);
     earth.addChild(orbit);
 
