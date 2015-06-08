@@ -21,7 +21,8 @@ function webGLStart() {
     console.log(gl.getParameter(gl.VERSION));
     console.log(gl.getParameter(gl.SHADING_LANGUAGE_VERSION));
 
-    universeGraph = initSceneGraph(canvas, projectionMatrix, modelViewMatrix);
+    universeGraph = initSceneGraph(modelViewMatrix);
+
     drawScene();
 }
 
@@ -98,6 +99,9 @@ function getShaderFromHTML(id) {
 function drawScene() {
     gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+
+    //gl.uniformMatrix4fv(shaderProgram.pMatrixUniform, false, projectionMatrix);
+    //gl.uniformMatrix4fv(shaderProgram.mvMatrixUniform, false, modelViewMatrix);
 
     universeGraph.draw();
 
