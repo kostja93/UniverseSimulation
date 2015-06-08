@@ -8,10 +8,10 @@ function initSceneGraph(modelViewMatrix) {
     var sonne = new Orb("Sonne", 1392000, 7.25);
     cam.addChild(sonne);
     // Planets
-    //var orbit = new Orbit(150,0);
-    //var earth = new Orb("Erde", 12800, 23.45);
-    //orbit.addChild(earth);
-    //sonne.addChild(orbit);
+    var orbit = new Orbit(150,0);
+    var earth = new Orb("Erde", 12800, 23.45);
+    orbit.addChild(earth);
+    sonne.addChild(orbit);
 
     //orbit = new Orbit(230, 1.85);
     //var mars  = new Orb("Mars", 6800, 25.19);
