@@ -8,6 +8,8 @@ function initSceneGraph(modelViewMatrix) {
     // Sonne
     var sunOrbit = new Orbit(0, 0, 0);
     var sonne = new Orb("Sonne", 13920, 7.25, 25.38);
+    var light = new Light([0, 0, 0, 0],[0, 0, 0, 0],[0, 0, 0, 0],[0, 0, 0, 0]);
+    sonne.addChild(light);
     sunOrbit.addChild(sonne);
     cam.addChild(sunOrbit);
     // Planets
