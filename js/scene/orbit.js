@@ -2,7 +2,10 @@ var Orbit = function(radius, rotation, rotationSpeed) {
     Node.call(this);
     this.radius = radius / 50;
     this.rotation = degToRad(rotation);
-    this.rotationSpeed = rotationSpeed;
+    if (rotationSpeed == 27.32)
+        this.rotationSpeed = rotationSpeed / 4;
+    else
+        this.rotationSpeed = calculateSpeed(rotationSpeed, 365);
 
     this.rotateZ(this.rotation);
     this.move([this.radius, 0, 0]);

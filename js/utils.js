@@ -7,5 +7,11 @@ function degToRad(deg) {
 }
 
 function scale(realLength) {
-    return realLength / 13920;
+    return realLength / 13920 / 2.0;
+}
+
+function calculateSpeed(relativ, referenz) {
+    if (relativ == 0)
+        return 0;
+    return (referenz/relativ) / 100.0 ;
 }
