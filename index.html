@@ -37,6 +37,7 @@
 
         varying vec3 vVertexPos;
         varying vec3 vNormalPos;
+        varying vec4 vColor;
 
 
         void main(void) {
@@ -44,6 +45,7 @@
             vec4 pos = uModelViewMatrix * vec4(aVertexPosition, 1);
             vVertexPos = pos.xyz / pos.w;
             vNormalPos = normalize(uNormalMatrix * aNormalPosition);
+            vColor = (vec4(aVertexPosition, 1.0) + 0.75)/1.5;
         }
         </script>
 
@@ -66,6 +68,7 @@
 
         varying vec3 vVertexPos;
         varying vec3 vNormalPos;
+        varying vec4 vColor;
 
 
         void main(void) {
@@ -91,7 +94,7 @@
                 float specLight = pow(max(dot(H, N), 0.0), uMaterialShininess);
                 specular = specLight * uMaterialSpecular * uLightSpecular;
             }
-            gl_FragColor = emissiv + ambient + specular + vec4(1.0, 0.0, 0.0, 1.0);
+            gl_FragColor = emissiv + ambient + specular + vColor;
         }
         </script>
 

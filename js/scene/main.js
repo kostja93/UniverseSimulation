@@ -15,6 +15,8 @@ function initSceneGraph(modelViewMatrix) {
     // Planets
     var earthOrbit = new Orbit(150, 0, 1);
     var earth = new Orb("Erde", 12800, 23.45, 1.0);
+    var material = new Material([0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]);
+    earth.addChild(material);
     earthOrbit.addChild(earth);
     sunOrbit.addChild(earthOrbit);
 
