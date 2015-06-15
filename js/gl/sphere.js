@@ -2,6 +2,7 @@ var Sphere = function(radius){
     Node.call(this);
 
     this.vertexPositionData = [];
+    this.vertexNormal = [];
 
     latitudeBands = 100;
     longitudeBands = 100;
@@ -21,6 +22,10 @@ var Sphere = function(radius){
             this.vertexPositionData.push(radius * x);
             this.vertexPositionData.push(radius * y);
             this.vertexPositionData.push(radius * z);
+            
+            this.vertexNormal.push(x);
+            this.vertexNormal.push(y);
+            this.vertexNormal.push(z);
         }
     }
 
@@ -77,6 +82,11 @@ Sphere.prototype.initBuffers = function(){
     this.vertexIndexBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.vertexIndexBuffer);
     gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(this.indexData), gl.STATIC_DRAW);
+
+
+    this.sphereNormalPositionBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, this.sphereNormalPositionBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(this.vertexNormal), gl.STATIC_DRAW);
 }
 
 Sphere.prototype.bindBuffers = function(){
@@ -85,6 +95,9 @@ Sphere.prototype.bindBuffers = function(){
     gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, 3, gl.FLOAT, false, 0, 0);
 
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.vertexIndexBuffer);
+
+    gl.bindBuffer(gl.ARRAY_BUFFER, this.sphereNormalPositionBuffer);
+    gl.vertexAttribPointer(shaderProgram.vertexNormalAttribute, 3, gl.FLOAT, false, 0, 0);
 }
 
 Sphere.prototype.draw = function(){

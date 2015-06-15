@@ -55,9 +55,25 @@ function initShaders() {
 
     shaderProgram.vertexPositionAttribute = gl.getAttribLocation(shaderProgram, "aVertexPosition");
     gl.enableVertexAttribArray(shaderProgram.vertexPositionAttribute);
+    shaderProgram.vertexNormalAttribute = gl.getAttribLocation(shaderProgram, "aNormalPosition");
+    gl.enableVertexAttribArray(shaderProgram.vertexNormalAttribute);
 
     shaderProgram.pMatrixUniform = gl.getUniformLocation(shaderProgram, "uProjectionMatrix");
     shaderProgram.mvMatrixUniform = gl.getUniformLocation(shaderProgram, "uModelViewMatrix");
+    shaderProgram.nMatrixUniform = gl.getUniformLocation(shaderProgram, "uNormalMatrix");
+
+    // light and material variables
+
+    shaderProgram.lightPosition = gl.getUniformLocation(shaderProgram, "uLightPosition");
+    shaderProgram.lightAmbient = gl.getUniformLocation(shaderProgram, "uLightAmbient");
+    shaderProgram.lightDiffuse = gl.getUniformLocation(shaderProgram, "uLightDiffuse");
+    shaderProgram.lightSpecular = gl.getUniformLocation(shaderProgram, "uLightSpecular");
+
+    shaderProgram.materialEmission = gl.getUniformLocation(shaderProgram, "uMaterialEmission");
+    shaderProgram.materialAmbient = gl.getUniformLocation(shaderProgram, "uMaterialAmbient");
+    shaderProgram.materialDiffuse = gl.getUniformLocation(shaderProgram, "uMaterialDiffuse");
+    shaderProgram.materialSpecular = gl.getUniformLocation(shaderProgram, "uMaterialSpecular");
+    shaderProgram.materialShininess = gl.getUniformLocation(shaderProgram, "uMaterialShininess");
 
 }
 
@@ -99,9 +115,6 @@ function getShaderFromHTML(id) {
 function drawScene() {
     gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-
-    //gl.uniformMatrix4fv(shaderProgram.pMatrixUniform, false, projectionMatrix);
-    //gl.uniformMatrix4fv(shaderProgram.mvMatrixUniform, false, modelViewMatrix);
 
     universeGraph.draw();
 
