@@ -94,7 +94,7 @@
                 float specLight = pow(max(dot(H, N), 0.0), uMaterialShininess);
                 specular = specLight * uMaterialSpecular * uLightSpecular;
             }
-            gl_FragColor = emissiv + ambient + specular + vColor;
+            gl_FragColor = emissiv + ambient + specular;
         }
         </script>
 

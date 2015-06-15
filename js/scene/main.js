@@ -8,6 +8,12 @@ function initSceneGraph() {
     var sunOrbit = new Orbit(0, 0, 0);
     var sonne = new Orb("Sonne", 7.25, 25.38);
     sonne.addChild(new Sphere(scale(13920)));
+    sonne.addChild(new Light(
+        [0, 0, 0, 1],
+        [1, 1, 0, 1],
+        [1, 1, 0, 1],
+        [1, 1, 0, 1]
+    ));
 
     sunOrbit.addChild(sonne);
     cam.addChild(sunOrbit);
@@ -16,6 +22,13 @@ function initSceneGraph() {
     var earthOrbit = new Orbit(150, 0, 1);
     var earth = new Orb("Erde", 23.45, 1.0);
     earth.addChild(new Sphere(scale(12800)));
+    earth.addChild(new Material(
+        [0, 0, 0, 1],
+        [0, 0, 0, 1],
+        [0, 0, 0, 1],
+        [0, 0, 0, 1],
+        1.0
+    ));
     earthOrbit.addChild(earth);
     sunOrbit.addChild(earthOrbit);
 
@@ -29,7 +42,6 @@ function initSceneGraph() {
     var moon  = new Orb("Mond", 3476, 1.54, 27.32);
     var lengthOfMoon = scale(3476);
     moon.addChild(new Quader(lengthOfMoon, lengthOfMoon, lengthOfMoon));
-    //moon.addChild(new Sphere(lengthOfMoon));
     moonOrbit.addChild(moon);
     earthOrbit.addChild(moonOrbit);
 

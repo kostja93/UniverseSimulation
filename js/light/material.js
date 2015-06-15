@@ -6,7 +6,7 @@ var Material = function(emission, ambient, diffuse, specular, shininess){
     this.diffuse = diffuse;
     this.specular = specular;
     this.shininess = shininess;
-}
+};
 
 //Inherit from Node
 Material.prototype = Object.create(Node.prototype);
@@ -18,4 +18,4 @@ Material.prototype.draw = function(){
     gl.uniform4fv(shaderProgram.materialDiffuse, this.diffuse);
     gl.uniform4fv(shaderProgram.materialSpecular, this.specular);
     gl.uniform1f(shaderProgram.materialShininess, this.shininess);
-}
+};

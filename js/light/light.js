@@ -6,7 +6,7 @@ var Light = function(position, ambient, diffuse, specular){
     this.ambient = ambient;
     this.diffuse = diffuse;
     this.specular = specular;
-}
+};
 
 //Inherit from Node
 Light.prototype = Object.create(Node.prototype);
@@ -14,11 +14,11 @@ Light.prototype.constructor = Node;
 
 Light.prototype.updatePosition = function(mvMatrix){
     mat4.mul(this.worldposition, mvMatrix, this.position);
-}
+};
 
 Light.prototype.draw = function(){
     gl.uniform4fv(shaderProgram.lightPosition, this.worldposition);
     gl.uniform4fv(shaderProgram.lightAmbient, this.ambient);
     gl.uniform4fv(shaderProgram.lightDiffuse, this.diffuse);
     gl.uniform4fv(shaderProgram.lightSpecular, this.specular);
-}
+};
