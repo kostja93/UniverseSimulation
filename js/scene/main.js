@@ -14,7 +14,7 @@ function initSceneGraph() {
         [0, 0, 0, 1],
         [0.2, 0.2, 0.2, 1],
         [0.8, 0.8, 0.8, 1],
-        [1.0, 1.0, 1.0, 1]
+        [1.0, 1, 1, 1]
     ));
 
     sunOrbit.addChild(gold);
@@ -24,7 +24,7 @@ function initSceneGraph() {
     var earthOrbit = new Orbit(150, 0, 1);
     var earth = new Orb("Erde", 23.45, 1.0);
     earth.addChild(new Sphere(scale(12800)));
-    var jade = new Material([0.0, 0.0, 0.0, 1.0], [0.14, 0.22, 0.16, 0.9], [0.54, 0.89, 0.63, 0.9], [0.32, 0.32, 0.32, 0.9], 12.8);
+    var jade = new Material([0, 0, 0, 1.0], [0.14, 0.22, 0.16, 0.9], [0.54, 0.89, 0.63, 0.9], [0.32, 0.32, 0.32, 0.9], 12.8);
     jade.addChild(earth);
     earthOrbit.addChild(jade);
     sunOrbit.addChild(earthOrbit);
