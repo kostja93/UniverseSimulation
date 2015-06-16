@@ -24,22 +24,22 @@ function initSceneGraph() {
     var earthOrbit = new Orbit(150, 0, 1);
     var earth = new Orb("Erde", 23.45, 1.0);
     earth.addChild(new Sphere(scale(12800)));
-    var jade = new Material([0, 0, 0, 1.0], [0.14, 0.22, 0.16, 0.9], [0.54, 0.89, 0.63, 0.9], [0.32, 0.32, 0.32, 0.9], 12.8);
-    jade.addChild(earth);
-    earthOrbit.addChild(jade);
+    var blueEarth = new Material([0, 0, 0.1, 1.0], [0.14, 0.22, 0.16, 0.9], [0.54, 0.89, 0.63, 0.9], [0.32, 0.32, 0.32, 0.9], 12.8);
+    blueEarth.addChild(earth);
+    earthOrbit.addChild(blueEarth);
     sunOrbit.addChild(earthOrbit);
 
     var marsOrbit = new Orbit(230, 1.85, 1.88);
     var mars  = new Orb("Mars", 25.19, 1.03);
     mars.addChild(new Sphere(scale(6800)));
-    var silber = new Material([0.0, 0.0, 0.0, 1.0], [0.19, 0.19, 0.19, 1.0], [0.51, 0.51, 0.51, 1.0], [0.51, 0.51, 0.51, 1.0], 51.2);
-    silber.addChild(mars);
-    marsOrbit.addChild(silber);
+    var redMars = new Material([0.1, 0.0, 0.0, 1.0], [0.19, 0.19, 0.19, 1.0], [0.51, 0.51, 0.51, 1.0], [0.51, 0.51, 0.51, 1.0], 51.2);
+    redMars.addChild(mars);
+    marsOrbit.addChild(redMars);
     sunOrbit.addChild(marsOrbit);
 
     var moonOrbit = new Orbit(50, 45.145, 27.32);
     var moon  = new Orb("Mond", 3476, 1.54, 27.32);
-    var silberMoon = new Material([0.0, 0.0, 0.0, 1.0], [0.19, 0.19, 0.19, 1.0], [0.51, 0.51, 0.51, 1.0], [0.51, 0.51, 0.51, 1.0], 51.2);
+    var silberMoon = new Material([0.1, 0.1, 0.1, 1.0], [0.19, 0.19, 0.19, 1.0], [0.51, 0.51, 0.51, 1.0], [0.51, 0.51, 0.51, 1.0], 51.2);
     var lengthOfMoon = scale(3476);
     moon.addChild(new Quader(lengthOfMoon, lengthOfMoon, lengthOfMoon));
     silberMoon.addChild(moon);
