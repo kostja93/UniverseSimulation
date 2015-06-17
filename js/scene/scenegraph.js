@@ -16,7 +16,7 @@ Scenegraph.prototype.drawTraversal = function(node){
         node.updatePosition(this.model);
     }
 
-    mat4.multiply(this.model, this.model, node.model);
+    mat4.multiply(this.model, this.model, node.getModel());
     gl.uniformMatrix4fv(shaderProgram.mvMatrixUniform, false, this.model);
 
     mat3.normalFromMat4(this.uNormalMatrix, this.model);

@@ -78,6 +78,7 @@
             vec3 Eye = vec3(0.0, 0.0, 1.0);
             vec3 L = vec3(0.0);
             vec3 H = vec3(0.0);
+            vec4 diffuse = vec4(0.0, 0.0, 0.0, 1.0);
 
             if(uLightPosition.w == 0.0){
                 L = normalize(vec3(uLightPosition));
@@ -93,8 +94,10 @@
             if (a > 0.0) {
                 float specLight = pow(max(dot(H, N), 0.0), uMaterialShininess);
                 specular = specLight * uMaterialSpecular * uLightSpecular;
+                float diffuseLight = max(dot(N, L), 0.0);
+			    diffuse = diffuseLight * uMaterialDiffuse * uLightDiffuse;
             }
-            gl_FragColor = emissiv + ambient + specular;
+            gl_FragColor = emissiv + ambient + specular + diffuse;
         }
         </script>
 

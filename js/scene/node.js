@@ -31,3 +31,7 @@ Node.prototype.rotateZ = function (radians) {
 Node.prototype.move = function (howFar) {
     mat4.translate(this.model, this.model, howFar);
 };
+
+Node.prototype.getModel = function () {
+    return this.model;
+}
