@@ -30,7 +30,7 @@ function initSceneGraph() {
             rotation: 7,
             speed: 0.24
         },{
-            name: 'merkur',
+            name: 'mercury',
             radius: 4900,
             tilt: 0.0,
             speed: 0
@@ -125,6 +125,8 @@ function initSceneGraph() {
             speed: 1
         }, moon
     ));
+
+    sunOrbit.addChild(new BorgCubus());
 
     var keyboard = new KeyboardObserver(cam);
     keyboard.registerEvents();

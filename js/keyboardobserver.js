@@ -3,7 +3,8 @@
  */
 
 var KeyboardObserver = function (camera) {
-    this.camera = camera;
+    this.cameras = [];
+    this.cameras.push(camera);
 };
 
 KeyboardObserver.prototype.registerEvents = function() {
@@ -21,17 +22,21 @@ KeyboardObserver.prototype.registerEvents = function() {
 
 };
 
+KeyboardObserver.prototype.addCamera = function (camera) {
+    this.cameras.push(camera);
+};
+
 KeyboardObserver.prototype.keyPressed = function (code) {
     //console.log(code + " was pressed");
     var radians = Math.PI / 100.0;
 
     if (code == 87 || code == 38) { //w
-        this.camera.move([0, 0, -0.1]);
+        this.cameras.forEach(function(cam) {cam.move([0, 0, -0.1]);});
     } else if (code == 83 || code == 40) { //s
-        this.camera.move([0, 0, 0.1]);
+        this.cameras.forEach(function(cam) {cam.move([0, 0, 0.1]);});
     } else if (code == 81) {
-        this.camera.rotateY(radians);
+        this.cameras.forEach(function(cam) {cam.rotateY(radians);});
     } else if (code == 69) {
-        this.camera.rotateY(-radians);
+        this.cameras.forEach(function(cam) {cam.rotateY(-radians);});
     }
 };
