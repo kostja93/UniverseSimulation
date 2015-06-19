@@ -62,6 +62,69 @@ function initSceneGraph() {
             speed: 0.41
         }
     ));
+    //Saturn
+    sunOrbit.addChild(createPlanetSystem(
+        {
+            radius: 1400,
+            rotation: 2.48,
+            speed: 29.46
+        },{
+            name: 'saturn',
+            radius: 120500,
+            tilt: 26.73,
+            speed: 0.43
+        }
+    ));
+    //Uranus
+    sunOrbit.addChild(createPlanetSystem(
+        {
+            radius: 2800,
+            rotation: 0.77,
+            speed: 84.01
+        },{
+            name: 'uranus',
+            radius: 51100,
+            tilt: 97.86,
+            speed: 0.75
+        }
+    ));
+    //Neptun
+    sunOrbit.addChild(createPlanetSystem(
+        {
+            radius: 4500,
+            rotation: 1.77,
+            speed: 164.8
+        },{
+            name: 'neptune',
+            radius: 49500,
+            tilt: 29.58,
+            speed: 0.8
+        }
+    ));
+
+    //Earth with moon
+    var moon = createPlanetSystem({
+        radius: 50,
+        rotation: 5.15,
+        speed: 27.32
+    },{
+        name: '../moon',
+        radius: 3476,
+        tilt: 1.54,
+        speed: 27.32
+    });
+    sunOrbit.addChild(createPlanetSystem(
+        {
+            radius: 150,
+            rotation: 0,
+            speed: 1
+        },{
+            name: 'earth',
+            radius: 12800,
+            tilt: 23.45,
+            speed: 1
+        }, moon
+    ));
 
     var keyboard = new KeyboardObserver(cam);
     keyboard.registerEvents();
@@ -94,7 +157,7 @@ function createPlanetSystem(orbit, planet, subPlanets) {
     var orbit_ = new Orbit(orbit.radius, orbit.rotation, orbit.speed);
     var planet_ = new Orb(planet.name, planet.tilt, planet.speed);
     var material = new Material([0.0, 0.0, 0.0, 1.0], [0.19, 0.19, 0.19, 1.0], [0.51, 0.51, 0.51, 1.0], [0.51, 0.51, 0.51, 1.0], 51.2);
-    var texture  = new Texture('assets/textures/' + planet.name + '_small.jpg');
+    var texture  = new Texture('assets/textures/' + planet.name + '.jpg');
     var geometric = new Sphere(scale(planet.radius));
 
     orbit_.addChild(material);
