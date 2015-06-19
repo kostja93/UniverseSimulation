@@ -27,6 +27,8 @@ function webGLStart() {
 }
 
 function initGL(canvas) {
+    canvas.width = window.innerWidth -20;
+    canvas.height = window.innerHeight -10;
     try {
         gl = canvas.getContext("experimental-webgl");
         gl.viewportWidth = canvas.width;
@@ -75,7 +77,7 @@ function initShaders() {
     shaderProgram.materialSpecular = gl.getUniformLocation(shaderProgram, "uMaterialSpecular");
     shaderProgram.materialShininess = gl.getUniformLocation(shaderProgram, "uMaterialShininess");
 
-    shaderProgram.textureCoordinatesAttribute = gl.getAttribLocation(shaderProgram, "vTextureCoordinates");
+    shaderProgram.textureCoordinatesAttribute = gl.getAttribLocation(shaderProgram, "aTextureCoordinates");
     gl.enableVertexAttribArray(shaderProgram.textureCoordinatesAttribute);
 }
 

@@ -97,7 +97,7 @@ Sphere.prototype.initBuffers = function(){
 
     this.vertexTextureBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, this.vertexTextureBuffer);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(this.vertexTextureBuffer), gl.STATIC_DRAW);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(this.textureCoordinates), gl.STATIC_DRAW);
 };
 
 Sphere.prototype.bindBuffers = function(){
