@@ -75,6 +75,8 @@ function initShaders() {
     shaderProgram.materialSpecular = gl.getUniformLocation(shaderProgram, "uMaterialSpecular");
     shaderProgram.materialShininess = gl.getUniformLocation(shaderProgram, "uMaterialShininess");
 
+    shaderProgram.textureCoordinatesAttribute = gl.getAttribLocation(shaderProgram, "vTextureCoordinates");
+    gl.enableVertexAttribArray(shaderProgram.textureCoordinatesAttribute);
 }
 
 function getShaderFromHTML(id) {

@@ -31,9 +31,12 @@ function initSceneGraph() {
 
     var marsOrbit = new Orbit(230, 1.85, 1.88);
     var mars  = new Orb("Mars", 25.19, 1.03);
-    mars.addChild(new Sphere(scale(6800)));
+    var texture = new Texture('assets/textures/mars.jpg');
+    var sphere = new Sphere(scale(6800));
+    texture.addChild(mars);
+    mars.addChild(sphere);
     var redMars = new Material([0.1, 0.0, 0.0, 1.0], [0.19, 0.19, 0.19, 1.0], [0.51, 0.51, 0.51, 1.0], [0.51, 0.51, 0.51, 1.0], 51.2);
-    redMars.addChild(mars);
+    redMars.addChild(texture);
     marsOrbit.addChild(redMars);
     sunOrbit.addChild(marsOrbit);
 
@@ -41,6 +44,7 @@ function initSceneGraph() {
     var moon  = new Orb("Mond", 3476, 1.54, 27.32);
     var silberMoon = new Material([0.1, 0.1, 0.1, 1.0], [0.19, 0.19, 0.19, 1.0], [0.51, 0.51, 0.51, 1.0], [0.51, 0.51, 0.51, 1.0], 51.2);
     var lengthOfMoon = scale(3476);
+    silberMoon.addChild(new Texture('assets/textures/borg-cube.jpg'));
     moon.addChild(new Quader(lengthOfMoon, lengthOfMoon, lengthOfMoon));
     silberMoon.addChild(moon);
     moonOrbit.addChild(silberMoon);
@@ -49,5 +53,12 @@ function initSceneGraph() {
     var keyboard = new KeyboardObserver(cam);
     keyboard.registerEvents();
     return new Scenegraph(cam);
+}
+
+function createPlanetSystem(orbit, planet, subPlanets) {
+    var orbit = new Orbit(orbit.radius, orbit.roation, orbit.speed);
+    var planet = new Orb(planet.name, planet.tilt, planet.speed);
+    var material = new Material([0.1, 0.0, 0.0, 1.0], [0.19, 0.19, 0.19, 1.0], [0.51, 0.51, 0.51, 1.0], [0.51, 0.51, 0.51, 1.0], 51.2);
+    var texture  = new Texture('assets/textures/' + planet.name + '_small.jpg');
 }
 

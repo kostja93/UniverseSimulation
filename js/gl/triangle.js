@@ -35,7 +35,43 @@ Triangle.prototype.initBuffers = function(){
     this.triangleNormalPositionBuffer = gl.createBuffer();
 	gl.bindBuffer(gl.ARRAY_BUFFER, this.triangleNormalPositionBuffer);
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(this.normalVertices), gl.STATIC_DRAW);
-}
+
+    this.textureCoordinates = [
+        // vorne
+        0.0,  0.0,
+        1.0,  0.0,
+        1.0,  1.0,
+        0.0,  1.0,
+        // hinten
+        0.0,  0.0,
+        1.0,  0.0,
+        1.0,  1.0,
+        0.0,  1.0,
+        // oben
+        0.0,  0.0,
+        1.0,  0.0,
+        1.0,  1.0,
+        0.0,  1.0,
+        // unten
+        0.0,  0.0,
+        1.0,  0.0,
+        1.0,  1.0,
+        0.0,  1.0,
+        // rechts
+        0.0,  0.0,
+        1.0,  0.0,
+        1.0,  1.0,
+        0.0,  1.0,
+        // links
+        0.0,  0.0,
+        1.0,  0.0,
+        1.0,  1.0,
+        0.0,  1.0
+    ];
+    this.textureBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, this.textureBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(this.textureCoordinates), gl.STATIC_DRAW);
+};
 
 Triangle.prototype.draw = function(){
     gl.bindBuffer(gl.ARRAY_BUFFER, this.triangleVertexPositionBuffer);

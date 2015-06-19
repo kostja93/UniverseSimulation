@@ -17,6 +17,7 @@
 
         <script src="js/light/light.js"></script>
         <script src="js/light/material.js"></script>
+        <script src="js/light/texture.js"></script>
         <script src="js/gl/camera.js" type="application/javascript"></script>
         <script src="js/scene/orb.js"></script>
         <script src="js/scene/orbit.js"></script>
@@ -30,6 +31,7 @@
         <script id="shader-vs" type="x-shader/x-vertex">
         attribute vec3 aVertexPosition;
         attribute vec3 aNormalPosition;
+        attribute vec2 aTextureCoordinates;
 
         uniform mat4 uModelViewMatrix;
         uniform mat4 uProjectionMatrix;
@@ -37,7 +39,7 @@
 
         varying vec3 vVertexPos;
         varying vec3 vNormalPos;
-        varying vec4 vColor;
+        varying vec2 vTextureCoord;
 
 
         void main(void) {
@@ -45,7 +47,7 @@
             vec4 pos = uModelViewMatrix * vec4(aVertexPosition, 1);
             vVertexPos = pos.xyz / pos.w;
             vNormalPos = normalize(uNormalMatrix * aNormalPosition);
-            vColor = (vec4(aVertexPosition, 1.0) + 0.75)/1.5;
+            vTextureCoord = aTextureCoordinates;
         }
         </script>
 
@@ -66,9 +68,12 @@
         uniform vec4 uMaterialSpecular;
         uniform float uMaterialShininess;
 
+        uniform sampler2D uSampler;
+
         varying vec3 vVertexPos;
         varying vec3 vNormalPos;
         varying vec4 vColor;
+        varying vec2 vTextureCoord;
 
 
         void main(void) {
@@ -97,7 +102,8 @@
                 float diffuseLight = max(dot(N, L), 0.0);
 			    diffuse = diffuseLight * uMaterialDiffuse * uLightDiffuse;
             }
-            gl_FragColor = emissiv + ambient + specular + diffuse;
+            vec4 fullLight = emissiv + ambient + specular + diffuse;
+            gl_FragColor = texture2D(uSampler, vec2(vTextureCoord.s, vTextureCoord.t)) + fullLight;
         }
         </script>
 

@@ -13,7 +13,7 @@ var Texture = function(src){
     this.image.src = src;
     
     this.texture = this.image.texture;
-}
+};
 
 //Inherit from Object3d/SGNode
 Texture.prototype = Object.create(Node.prototype);
@@ -33,10 +33,10 @@ Texture.loadTexture = function(image, texture){
 
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
     gl.bindTexture(gl.TEXTURE_2D, null);
-}
+};
 
 Texture.prototype.draw = function(){
     gl.activeTexture(gl.TEXTURE0);
     gl.bindTexture(gl.TEXTURE_2D, this.texture);
     gl.uniform1i(gl.getUniformLocation(shaderProgram, "uSampler"), 0);
-}
+};
