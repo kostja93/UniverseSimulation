@@ -79,6 +79,9 @@ Triangle.prototype.draw = function(){
  
     gl.bindBuffer(gl.ARRAY_BUFFER, this.triangleNormalPositionBuffer);
     gl.vertexAttribPointer(shaderProgram.vertexNormalAttribute, 3, gl.FLOAT, false, 0, 0);
+
+    gl.bindBuffer(gl.ARRAY_BUFFER, this.textureBuffer);
+    gl.vertexAttribPointer(shaderProgram.textureCoordinatesAttribute, 2, gl.FLOAT, false, 0, 0);
     
     gl.drawArrays(gl.TRIANGLES, 0, 3);
 };

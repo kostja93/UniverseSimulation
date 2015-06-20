@@ -20,8 +20,8 @@ var Sphere = function(radius){
             var x = sinTheta * sinPhi;
             var y = cosTheta;
             var z = cosPhi * sinTheta;
-            var u = 1 - (j / longitudeBands);
-            var v = 1 - (i / latitudeBands);
+            var u = (j / longitudeBands);
+            var v = (i / latitudeBands);
 
             this.textureCoordinates.push(u);
             this.textureCoordinates.push(v);
