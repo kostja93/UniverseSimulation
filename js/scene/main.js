@@ -4,6 +4,9 @@ function initSceneGraph() {
     var cam = new Camera();
     cam.perspective(45, gl.viewportWidth / gl.viewportHeight, 0.1, 100000.0);
 
+    //Controller
+    var controller = new GameController(cam);
+
     // Sun
     var sunOrbit = createSun();
     cam.addChild(sunOrbit);
@@ -137,7 +140,7 @@ function initSceneGraph() {
     var keyboard = new KeyboardObserver(cam);
     keyboard.addCamera(borgOrb);
     keyboard.registerEvents();
-    return new Scenegraph(cam);
+    return [new Scenegraph(cam), controller];
 }
 
 function createSun() {

@@ -58,8 +58,9 @@ GameController.prototype.axesAction = function(axes){
 // updateStatus() wird vor jedem Zeichnen der Szene aufgerufen
 GameController.prototype.updateStatus = function() {
     
-    if(!this.isConnected())
+    if(!this.isConnected()){
         return;
+    }
 
     var controller = this.gp.controller;
 
@@ -72,6 +73,7 @@ GameController.prototype.updateStatus = function() {
         }
 
         if (pressed){
+            console.log(i);
             this.buttonAction(i);
         } 
     }

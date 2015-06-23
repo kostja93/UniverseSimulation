@@ -7,6 +7,7 @@ var modelViewMatrix = mat4.create();
 var projectionMatrix = mat4.create();
 var keyboard;
 var cam;
+var controller;
 
 // globale Funktionen
 function webGLStart() {
@@ -21,8 +22,10 @@ function webGLStart() {
     console.log(gl.getParameter(gl.VERSION));
     console.log(gl.getParameter(gl.SHADING_LANGUAGE_VERSION));
 
-    universeGraph = initSceneGraph(modelViewMatrix);
+    universeGraph = initSceneGraph();
 
+    controller = universeGraph[1];
+    universeGraph = universeGraph[0];
     drawScene();
 }
 
@@ -120,6 +123,7 @@ function drawScene() {
     gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
+    controller.updateStatus();
     universeGraph.draw();
 
     // Ermöglicht Echtzeit Rendering und Animation
