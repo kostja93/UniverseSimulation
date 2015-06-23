@@ -38,9 +38,9 @@ Triangle.prototype.initBuffers = function(){
 
     this.textureCoordinates = [
         // vorne
-        0.0,  0.0,
-        1.0,  0.0,
-        1.0,  1.0
+        1.0,  1.0,
+        0.0,  1.0,
+        0.0,  0.0
     ];
     this.textureBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, this.textureBuffer);

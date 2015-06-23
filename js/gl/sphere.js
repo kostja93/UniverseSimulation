@@ -43,7 +43,7 @@ var Sphere = function(radius){
             var idx0 = (i * (longitudeBands + 1)) + j;
             var idx1 = idx0 + longitudeBands + 1;
             var idx2 = idx0 + 1;
-            var idx3 = idx1 + 1;;
+            var idx3 = idx1 + 1;
             this.indexData.push(idx0); 
             this.indexData.push(idx1);
             this.indexData.push(idx2); 
