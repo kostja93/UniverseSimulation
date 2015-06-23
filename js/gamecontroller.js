@@ -36,8 +36,6 @@ GameController.prototype.isConnected = function() {
 }
 
 GameController.prototype.buttonAction = function(buttonidx){
-    // Beispielcode
-    console.log("Button pressed:", buttonidx);
     var radians = Math.PI / 100.0;
     switch (buttonidx) {
         case 0: this.node.move([0, 0, 0.1]); break;
@@ -50,14 +48,16 @@ GameController.prototype.buttonAction = function(buttonidx){
 }
 
 GameController.prototype.axesAction = function(axes){
-    // Beispielcode zum auslesen der Werte von Stick 3
-    if(axes[3].toFixed(3)>0.1||axes[3].toFixed(3)<-0.1){
-      console.log("Axis 3:", axes[3].toFixed(3));
-    }
-
-    /**
-     Hier Code einfügen
-    **/
+//if(axes[3].toFixed(3)>0.1||axes[3].toFixed(3)<-0.1){
+//      console.log("Axis 3:", axes[3].toFixed(3));
+//    }
+    var node = this.node;
+    var axe = axes[3];
+    var move = axe.toFixed(3);
+    if (move > 0.1)
+        node.move([0, 0, 0.1]);
+    else if (move > -0.1)
+       node.move([0, 0, -0.1]);
 }
 
 // updateStatus() wird vor jedem Zeichnen der Szene aufgerufen
@@ -78,7 +78,6 @@ GameController.prototype.updateStatus = function() {
         }
 
         if (pressed){
-            console.log(i);
             this.buttonAction(i);
         } 
     }
