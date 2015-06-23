@@ -128,11 +128,14 @@ function initSceneGraph() {
 
 
     var theBorgs = new BorgCubus();
+    borgOrb = new BorgOrbit(1, 5);
+    borgOrb.addChild(theBorgs);
 
-    sunOrbit.addChild(theBorgs);
+    //sunOrbit.addChild(theBorgs);
+    cam.addChild(borgOrb);
 
     var keyboard = new KeyboardObserver(cam);
-    //keyboard.addCamera(theBorgs);
+    keyboard.addCamera(borgOrb);
     keyboard.registerEvents();
     return new Scenegraph(cam);
 }

@@ -19,9 +19,3 @@ var BorgCubus = function () {
 
 BorgCubus.prototype = Object.create(Node.prototype);
 BorgCubus.prototype.constructor = Node;
-
-BorgCubus.prototype.rotateY = function (radians) {
-    this.move([0, 0.3, -4]);
-    this.rotateY(radians);
-    this.move([0, -0.3, 4]);
-};
