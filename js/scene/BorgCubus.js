@@ -9,7 +9,7 @@ var BorgCubus = function () {
     var texture  = new Texture("assets/textures/borg-cube.jpg");
     var quader   = new Quader(length, length, length);
 
-    this.move([0, -0.3, 6]);
+    this.move([0, -0.3, 4]);
 
     material.addChild(texture);
     texture.addChild(quader);
@@ -20,8 +20,8 @@ var BorgCubus = function () {
 BorgCubus.prototype = Object.create(Node.prototype);
 BorgCubus.prototype.constructor = Node;
 
-//BorgCubus.prototype.rotateY = function (radians) {
-//    this.move([0, 0, 0]);
-//    this.rotateY(this.rotationSpeed * Math.PI/1000.0);
-//    this.move([this.radius, 0, 0]);
-//}
+BorgCubus.prototype.rotateY = function (radians) {
+    this.move([0, 0.3, -4]);
+    this.rotateY(radians);
+    this.move([0, -0.3, 4]);
+};

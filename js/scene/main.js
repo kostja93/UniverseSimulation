@@ -126,9 +126,13 @@ function initSceneGraph() {
         }, moon
     ));
 
-    sunOrbit.addChild(new BorgCubus());
+
+    var theBorgs = new BorgCubus();
+
+    sunOrbit.addChild(theBorgs);
 
     var keyboard = new KeyboardObserver(cam);
+    //keyboard.addCamera(theBorgs);
     keyboard.registerEvents();
     return new Scenegraph(cam);
 }
