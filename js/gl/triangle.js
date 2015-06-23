@@ -1,4 +1,4 @@
-var Triangle = function(v1, v2, v3){
+var Triangle = function(v1, v2, v3, textureCoordinates){
     this.vertices = [
         v1[0], v1[1], v1[2],
         v2[0], v2[1], v2[2],
@@ -22,6 +22,7 @@ var Triangle = function(v1, v2, v3){
 	this.normal[0], this.normal[1], this.normal[2]
     ];
 
+    this.textureCoordinates = textureCoordinates;
 
     this.initBuffers();
 };
@@ -36,12 +37,6 @@ Triangle.prototype.initBuffers = function(){
 	gl.bindBuffer(gl.ARRAY_BUFFER, this.triangleNormalPositionBuffer);
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(this.normalVertices), gl.STATIC_DRAW);
 
-    this.textureCoordinates = [
-        // vorne
-        0.0,  0.0,
-        1.0,  0.0,
-        1.0,  1.0
-    ];
     this.textureBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, this.textureBuffer);
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(this.textureCoordinates), gl.STATIC_DRAW);

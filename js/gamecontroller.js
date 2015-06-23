@@ -38,10 +38,15 @@ GameController.prototype.isConnected = function() {
 GameController.prototype.buttonAction = function(buttonidx){
     // Beispielcode
     console.log("Button pressed:", buttonidx);
-
-    /**
-     Hier Code einfügen
-    **/
+    var radians = Math.PI / 100.0;
+    switch (buttonidx) {
+        case 0: this.node.move([0, 0, 0.1]); break;
+        case 1: this.node.move([0.1, 0, 0]); break;
+        case 2: this.node.move([-0.1, 0, 0]); break;
+        case 3: this.node.move([0, 0, -0.1]); break;
+        case 4: this.node.rotateY(radians); break;
+        case 5: this.node.rotateY(-radians); break;
+    }
 }
 
 GameController.prototype.axesAction = function(axes){
