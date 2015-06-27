@@ -133,9 +133,12 @@ function initSceneGraph() {
     var theBorgs = new BorgCubus();
     borgOrb = new BorgOrbit(1, 5);
     borgOrb.addChild(theBorgs);
-
-    //sunOrbit.addChild(theBorgs);
     cam.addChild(borgOrb);
+
+    var sky = new Skybox(1000);
+    var skyImage = new Texture("assets/universe.jpg");
+    skyImage.addChild(sky);
+    cam.addChild(skyImage);
 
     var keyboard = new KeyboardObserver(cam);
     keyboard.addCamera(borgOrb);
