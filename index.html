@@ -107,8 +107,10 @@
 			    diffuse = diffuseLight * uMaterialDiffuse * uLightDiffuse;
             }
             vec4 fullLight = emissiv + ambient + diffuse + specular;
-            gl_FragColor = texture2D(uSampler, vec2(vTextureCoord.s, vTextureCoord.t)) * fullLight;
-            //gl_FragColor = vec4(vTextureCoord.s, vTextureCoord.t, 0.0, 1.0);
+			float d = length(vec3(uLightPosition) - vVertexPos);
+			vec4 I_Modifiziert = (fullLight / d*d);
+
+			gl_FragColor = I_Modifiziert * texture2D(uSampler, vec2(vTextureCoord.s, vTextureCoord.t));
         }
         </script>
 
